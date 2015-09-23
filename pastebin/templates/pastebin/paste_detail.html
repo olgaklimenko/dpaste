@@ -1,10 +1,9 @@
 {% extends "base.html" %}
 {% block title %}{{ object }}{% endblock %}
 {% block content %}
-<script language="javascript" src="{{ STATIC_URL }}js/pythonEffects.js"></script>
+<script language="javascript" src="{{ STATIC_URL }}js/blockSelection.js"></script>
 <h1>{{ object }}</h1>
 <p>Syntax: {{ object.get_syntax_display }}<br>
 Date: {{object.timestamp|date:"r" }}</p>
-<code><pre name="code" id="code"   onmousemove="getBlockFromEvent(event);"
-   onmouseout="isMouseLeave(this, event));" >{{ object.content }}</pre></code>
+<code ><pre name="code" id="code" onclick="getBlockFromEvent(event);"  >{{ object.content }}</pre></code>
 {% endblock %}
