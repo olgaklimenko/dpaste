@@ -6,10 +6,23 @@
             h1 { background: #ccf; padding: 20px; }
             pre { padding: 20px; background: #ddd; }
         </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script language="javascript" src="{{ STATIC_URL }}js/pythonEffects.js"></script>
+        <link type="text/css" rel="stylesheet" href="{{STATIC_URL}}css/pythonEffects.css"></link>
+        <link type="text/css" rel="stylesheet" href="{{STATIC_URL}}css/shCore.css"></link>
+        <link type="text/css" rel="stylesheet" href="{{STATIC_URL}}css/shThemeDefault.css"></link>
+        <script language="javascript" src="{{ STATIC_URL }}js/shCore.js"></script>
+        <script language="javascript"> SyntaxHighlighter.all();
+        </script>
+        <script language="javascript" src="{{ STATIC_URL }}js/shBrushPython.js"></script>
+        <script language="javascript" src="{{ STATIC_URL }}js/shBrushXml.js"></script>
+        <script language="javascript" src="{{ STATIC_URL }}js/shBrushJScript.js"></script>
+        <script language="javascript" src="{{ STATIC_URL }}js/shBrushSql.js"></script>
+        <script language="javascript" src="{{ STATIC_URL }}js/shBrushCss.js"></script>
     </head>
     <body>
-        <p><a href="/paste/add/"> Add one </a></p>&bull;
-        <a href="/paste/">List all</a>
+        <p><a href="/pastebin/add/"> Add one </a></p>&bull;
+        <a href="/pastebin/">List all</a>
         {% block content %}{% endblock %}
     </body>
 </html>

@@ -1,0 +1,51 @@
+function getBlockFromEvent (evt) {
+    if (evt.rangeParent && document.createRange) {
+        var range = document.createRange();
+        range.setStart(evt.rangeParent, evt.rangeOffset);
+        range.setEnd(evt.rangeParent, evt.rangeOffset);
+        expandRangeToBlock(range);
+        var block = range.toString();
+        range.detach();
+        return block;    
+    }
+    else {
+        return null;
+    }
+}
+
+function expandRangeToBlock (range) {
+  var startOfBlock = /{/m;
+  var endOfBlock = /}/m;
+
+  while (!startOfBlock.test(range.toString())) {
+    range.setStart(range.startContainer, range.startOffset - 1);
+  }
+  range.setStart(range.startContainer, range.startOffset);
+  while (!endOfBlock.test(range.toString())) {
+    range.setEnd(range.endContainer, range.endOffset + 1);
+  }
+  range.setEnd(range.endContainer, range.endOffset);
+  var selection;
+  selection = window.getSelection();
+  selection.removeAllRanges();
+  selection.addRange(range);
+  return range.toString();
+}
+
+function isMouseLeave (node, evt) {
+  if (node.contains && evt.toElement) {
+    window.getSelection().removeAllRanges();
+    return !node.contains(evt.toElement);
+  }
+}
+
+function contains (container, containee) {
+  do {
+    if (container == containee) {
+      return true;
+    }
+    containee = containee.parentNode;
+  }
+  while (containee)
+  return false;
+}
