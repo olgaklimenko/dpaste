@@ -27,4 +27,3 @@ class Paste(models.Model):
     def get_absolute_url(self):
         return reverse('object_detail', kwargs={'object_id':self.id})
 
-
